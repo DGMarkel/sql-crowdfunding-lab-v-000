@@ -19,12 +19,11 @@ end
 def selects_the_user_name_age_and_pledge_amount_for_all_pledges_alphabetized_by_name
   SELECT users.name, users.age, sum(pledges.amount)
   FROM users
-  LEFT OUTER JOIN pledges
+  INNER JOIN pledges
   ON pledges.project_id = users.id
-  GROUP BY sum(pledges.amount)
   GROUP BY users.name
   ORDER BY users.name ASC;
-  
+
 end
 
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
